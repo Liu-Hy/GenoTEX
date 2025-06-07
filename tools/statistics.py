@@ -526,6 +526,7 @@ def get_gene_regressors(trait: str, condition: str, trait_df: pd.DataFrame, cond
     Find genes suitable for two-step regression analysis by identifying genes that are:
     1. Present in both trait and condition datasets
     2. Known to be related to the condition based on prior knowledge
+    3. NOT known to be directly related to the trait (to satisfy IV exclusion restriction)
 
     Args:
         trait (str): Name of the target trait.
@@ -539,13 +540,17 @@ def get_gene_regressors(trait: str, condition: str, trait_df: pd.DataFrame, cond
         Returns empty list if no suitable genes are found.
     """
     gene_regressors = []
-    related_genes = get_known_related_genes(gene_info_path, condition)
+    condition_related_genes = get_known_related_genes(gene_info_path, condition)
+    trait_related_genes = get_known_related_genes(gene_info_path, trait)
+
     genes_in_trait_data = set(trait_df.columns) - {'Age', 'Gender', trait}
     genes_in_condition_data = set(condition_df.columns) - {'Age', 'Gender', condition}
 
     common_genes_across_data = genes_in_trait_data.intersection(genes_in_condition_data)
-    if len(common_genes_across_data) != 0 and len(related_genes) != 0:
-        gene_regressors = [g for g in related_genes if g in common_genes_across_data]
+    valid_instruments = set(condition_related_genes) - set(trait_related_genes)
+    if len(common_genes_across_data) != 0 and len(valid_instruments) != 0:
+        # Only use genes related to condition but NOT to trait (exclusion restriction)
+        gene_regressors = [g for g in valid_instruments if g in common_genes_across_data]
 
     return gene_regressors
 

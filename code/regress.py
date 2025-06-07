@@ -86,6 +86,9 @@ for i, (trait, condition) in enumerate(all_pairs):
 
                 trait_data[condition] = predicted_condition
 
+                # Remove gene regressors from trait_data to avoid multicollinearity
+                trait_data = trait_data.drop(columns=regressors, errors='ignore')
+
             Y = trait_data[trait].values
             Z = trait_data[condition].values
             X = trait_data.drop(columns=[trait, condition]).values

@@ -25,7 +25,7 @@ def gsea_enrichment_score(ranked_genes: List[str], ref_genes: List[str]) -> floa
     """
     ref_set = set(ref_genes)
     N = len(ranked_genes)
-    Nh = len(ref_set)
+    Nh = sum(1 for g in ranked_genes if g in ref_set)
     Nm = N - Nh
 
     if Nh == 0 or Nh == N:
