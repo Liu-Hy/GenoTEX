@@ -2,15 +2,15 @@
    CSS Variables
    =========================== */
 :root {
-    --primary-color: #059669;
-    --secondary-color: #10b981;
-    --accent-color: #14b8a6;
-    --text-dark: #1f2937;
-    --text-light: #6b7280;
+    --primary-color: #0d9488;
+    --secondary-color: #14b8a6;
+    --accent-color: #06b6d4;
+    --text-dark: #1e293b;
+    --text-light: #64748b;
     --bg-white: #ffffff;
-    --bg-light: #f0fdf4;
-    --bg-alt: #d1fae5;
-    --border-color: #d1d5db;
+    --bg-light: #f0fdfa;
+    --bg-alt: #ccfbf1;
+    --border-color: #e2e8f0;
     --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
     --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
     --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
@@ -103,7 +103,7 @@ a:hover {
    Header
    =========================== */
 .header {
-    background: linear-gradient(135deg, #047857 0%, #059669 50%, #10b981 100%);
+    background: linear-gradient(135deg, #0f766e 0%, #0d9488 50%, #14b8a6 100%);
     color: white;
     padding: 4rem 0 3rem;
     text-align: center;
@@ -347,40 +347,6 @@ a:hover {
     background-color: var(--bg-white);
 }
 
-.acceptance-notice {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    padding: 1.25rem 1.75rem;
-    background: linear-gradient(135deg, rgba(5, 150, 105, 0.1), rgba(16, 185, 129, 0.05));
-    border: 2px solid var(--primary-color);
-    border-radius: 0.75rem;
-    margin-bottom: 2rem;
-}
-
-.notice-icon {
-    font-size: 2rem;
-    flex-shrink: 0;
-    line-height: 1;
-}
-
-.notice-content {
-    flex: 1;
-}
-
-.notice-content strong {
-    display: block;
-    color: var(--primary-color);
-    font-size: 1.125rem;
-    font-weight: 600;
-    margin-bottom: 0.25rem;
-}
-
-.notice-subtitle {
-    color: var(--text-light);
-    font-size: 0.9375rem;
-}
-
 /* ===========================
    Stats Grid
    =========================== */
@@ -556,7 +522,7 @@ a:hover {
 
 .agent-card {
     padding: 1.75rem;
-    background: linear-gradient(135deg, rgba(5, 150, 105, 0.05), rgba(16, 185, 129, 0.05));
+    background: linear-gradient(135deg, rgba(13, 148, 136, 0.05), rgba(20, 184, 166, 0.05));
     border-radius: 0.75rem;
     border: 2px solid var(--border-color);
     transition: var(--transition);
@@ -591,11 +557,11 @@ a:hover {
 }
 
 .result-card {
-    background: linear-gradient(135deg, #ecfdf5, #d1fae5);
+    background: linear-gradient(135deg, #f0fdfa, #ccfbf1);
     padding: 2rem;
     border-radius: 0.75rem;
     text-align: center;
-    border: 2px solid #a7f3d0;
+    border: 2px solid #99f6e4;
     transition: var(--transition);
 }
 
@@ -803,23 +769,6 @@ a:hover {
     }
 
     .conference-name {
-        font-size: 0.875rem;
-    }
-
-    .acceptance-notice {
-        padding: 1rem 1.25rem;
-        gap: 0.75rem;
-    }
-
-    .notice-icon {
-        font-size: 1.5rem;
-    }
-
-    .notice-content strong {
-        font-size: 1rem;
-    }
-
-    .notice-subtitle {
         font-size: 0.875rem;
     }
 }
