@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="GenoTEX: An LLM Agent Benchmark for Automated Gene Expression Data Analysis">
+    <meta name="keywords" content="GenoTEX, LLM, gene expression, bioinformatics, AI, benchmark, genomics">
+    <meta name="author" content="Haoyang Liu, Shuyu Chen, Ye Zhang, Haohan Wang">
+    <title>GenoTEX: An LLM Agent Benchmark for Automated Gene Expression Data Analysis</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="logo-container">
+                <img src="images/genotex_logo.png" alt="GenoTEX Logo" class="logo">
+            </div>
+            <h1 class="title">GenoTEX: An LLM Agent Benchmark for Automated Gene Expression Data Analysis</h1>
+            
+            <div class="authors">
+                <div class="author-list">
+                    <span class="author">Haoyang Liu<sup>1</sup></span>
+                    <span class="author">Shuyu Chen<sup>1</sup></span>
+                    <span class="author">Ye Zhang<sup>2</sup></span>
+                    <span class="author">Haohan Wang<sup>1</sup></span>
+                </div>
+                <div class="affiliations">
+                    <p><sup>1</sup>University of Illinois Urbana-Champaign</p>
+                    <p><sup>2</sup>Novartis Institutes for BioMedical Research</p>
+                </div>
+            </div>
+
+            <div class="links">
+                <a href="https://github.com/Liu-Hy/GenoTEX" class="btn btn-primary" target="_blank">
+                    <svg class="icon" viewBox="0 0 16 16" fill="currentColor">
+                        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/>
+                    </svg>
+                    GitHub
+                </a>
+                <a href="https://arxiv.org/abs/XXXX.XXXXX" class="btn btn-secondary" target="_blank">
+                    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                        <polyline points="14 2 14 8 20 8"/>
+                    </svg>
+                    Paper
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="container">
+            <ul class="nav-list">
+                <li><a href="#abstract">Abstract</a></li>
+                <li><a href="#introduction">Introduction</a></li>
+                <li><a href="#benchmark">Benchmark</a></li>
+                <li><a href="#method">Method</a></li>
+                <li><a href="#results">Results</a></li>
+                <li><a href="#citation">Citation</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main">
+        <!-- Abstract Section -->
+        <section id="abstract" class="section">
+            <div class="container">
+                <h2 class="section-title">Abstract</h2>
+                <div class="content-box">
+                    <p>Recent advancements in machine learning have significantly improved the identification of disease-associated genes from gene expression datasets. However, these processes often require extensive expertise and manual effort, limiting their scalability. Large Language Model (LLM)-based agents have shown promise in automating these tasks due to their increasing problem-solving abilities.</p>
+                    
+                    <p>To support the evaluation and development of such methods, we introduce <strong>GenoTEX</strong>, a benchmark dataset for the automated analysis of gene expression data. GenoTEX provides analysis code and results for solving a wide range of gene-trait association problems, encompassing dataset selection, preprocessing, and statistical analysis, in a pipeline that follows computational genomics standards. The benchmark includes expert-curated annotations from bioinformaticians to ensure accuracy and reliability.</p>
+                    
+                    <p>To provide baselines for these tasks, we present <strong>GenoAgent</strong>, a team of LLM-based agents that adopt a multi-step programming workflow with flexible self-correction, to collaboratively analyze gene expression datasets. Our experiments demonstrate the potential of LLM-based methods in analyzing genomic data, while error analysis highlights the challenges and areas for future improvement.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Introduction Section -->
+        <section id="introduction" class="section section-alt">
+            <div class="container">
+                <h2 class="section-title">Introduction</h2>
+                <div class="content-box">
+                    <h3>The Challenge</h3>
+                    <p>Gene expression analysis is crucial for understanding biological mechanisms and advancing clinical applications such as disease marker identification and personalized medicine. However, current approaches face several challenges:</p>
+                    
+                    <ul class="feature-list">
+                        <li><strong>Labor-Intensive:</strong> Bioinformaticians spend up to 45% of their work hours on tasks that could be automated</li>
+                        <li><strong>Expensive:</strong> The genetics research industry incurs around $1.72 billion annually on manual data analysis tasks</li>
+                        <li><strong>Complex:</strong> Analysis requires integrating data across multiple large, semi-structured files with high-dimensional, sparse data</li>
+                        <li><strong>Expertise-Dependent:</strong> Tasks demand flexible planning, troubleshooting, and domain knowledge inference abilities</li>
+                    </ul>
+
+                    <h3>Our Solution</h3>
+                    <p>GenoTEX addresses these challenges by providing a standardized benchmark for evaluating and developing automated methods for gene expression data analysis. The benchmark focuses on gene-trait association (GTA) problems: identifying genes whose expression patterns relate to specific traits while accounting for additional biological factors.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Benchmark Section -->
+        <section id="benchmark" class="section">
+            <div class="container">
+                <h2 class="section-title">The GenoTEX Benchmark</h2>
+                
+                <div class="benchmark-overview">
+                    <div class="stat-grid">
+                        <div class="stat-card">
+                            <div class="stat-number">1,384</div>
+                            <div class="stat-label">GTA Problems</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number">911</div>
+                            <div class="stat-label">Datasets</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number">152K+</div>
+                            <div class="stat-label">Total Samples</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number">238K</div>
+                            <div class="stat-label">Lines of Code</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="content-box">
+                    <h3>Benchmark Pipeline</h3>
+                    <p>GenoTEX follows a standardized pipeline that represents state-of-the-art analytics in computational genomics. The benchmark was curated by trained bioinformaticians following rigorous guidelines over 20 weeks.</p>
+                    
+                    <div class="image-container">
+                        <img src="images/benchmark_pipeline.jpg" alt="GenoTEX Benchmark Pipeline" class="figure">
+                        <p class="caption">Overview of the GenoTEX benchmark curation process, illustrating the standardized pipeline for analyzing gene expression datasets.</p>
+                    </div>
+                </div>
+
+                <div class="content-box">
+                    <h3>Key Features</h3>
+                    <div class="feature-grid">
+                        <div class="feature-item">
+                            <h4>🎯 Three Evaluation Tasks</h4>
+                            <p>Dataset Selection, Data Preprocessing, and Statistical Analysis with comprehensive metrics</p>
+                        </div>
+                        <div class="feature-item">
+                            <h4>📊 Real-World Complexity</h4>
+                            <p>Analysis of actual gene expression data from GEO and TCGA databases</p>
+                        </div>
+                        <div class="feature-item">
+                            <h4>✅ Expert-Curated</h4>
+                            <p>High-quality annotations from trained bioinformaticians with rigorous quality control</p>
+                        </div>
+                        <div class="feature-item">
+                            <h4>🔬 Scientific Relevance</h4>
+                            <p>132 traits across 9 categories including cardiovascular and neurological disorders</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="content-box">
+                    <h3>Data Preprocessing Pipeline</h3>
+                    <div class="image-container">
+                        <img src="images/preprocessing_pipeline.jpg" alt="Data Preprocessing Pipeline" class="figure">
+                        <p class="caption">High-level schematic of the GEO data preprocessing pipeline with example code of core components.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Method Section -->
+        <section id="method" class="section section-alt">
+            <div class="container">
+                <h2 class="section-title">GenoAgent: Multi-Agent Baseline</h2>
+                
+                <div class="content-box">
+                    <p>We propose <strong>GenoAgent</strong>, a team of LLM-based agents with specialized roles that mirror those in a genomic data science team. The system demonstrates four key capabilities:</p>
+
+                    <div class="capability-list">
+                        <div class="capability-item">
+                            <div class="capability-icon">🎯</div>
+                            <div class="capability-content">
+                                <h4>Context-Aware Planning</h4>
+                                <p>Agents complete tasks step by step, choosing the next action based on overall goals and previous results</p>
+                            </div>
+                        </div>
+                        <div class="capability-item">
+                            <div class="capability-icon">🔧</div>
+                            <div class="capability-content">
+                                <h4>Tool Utilization</h4>
+                                <p>Select and use library functions to assist with data preprocessing and statistical analysis</p>
+                            </div>
+                        </div>
+                        <div class="capability-item">
+                            <div class="capability-icon">🧠</div>
+                            <div class="capability-content">
+                                <h4>Domain Knowledge Inference</h4>
+                                <p>Observe metadata and intermediate results, using domain knowledge to infer desired information</p>
+                            </div>
+                        </div>
+                        <div class="capability-item">
+                            <div class="capability-icon">🔄</div>
+                            <div class="capability-content">
+                                <h4>Error Correction</h4>
+                                <p>Analyze program execution errors and iteratively correct them through multi-agent collaboration</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="content-box">
+                    <h3>Agent Roles</h3>
+                    <div class="agent-grid">
+                        <div class="agent-card">
+                            <h4>Project Manager</h4>
+                            <p>Coordinates the analysis process and assigns tasks following the standardized pipeline</p>
+                        </div>
+                        <div class="agent-card">
+                            <h4>Data Engineer</h4>
+                            <p>Focuses on data preprocessing tasks including dataset selection and feature extraction</p>
+                        </div>
+                        <div class="agent-card">
+                            <h4>Statistician</h4>
+                            <p>Performs statistical analysis to identify significant disease-associated genes</p>
+                        </div>
+                        <div class="agent-card">
+                            <h4>Code Reviewer</h4>
+                            <p>Helps debug code and verifies that implementations follow instructions correctly</p>
+                        </div>
+                        <div class="agent-card">
+                            <h4>Domain Expert</h4>
+                            <p>Provides professional knowledge consultation for complex data processing tasks</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Results Section -->
+        <section id="results" class="section">
+            <div class="container">
+                <h2 class="section-title">Experimental Results</h2>
+                
+                <div class="content-box">
+                    <h3>End-to-End Performance</h3>
+                    <p>GenoAgent with OpenAI o1 achieved an AUROC of <strong>0.74</strong> in identifying significant genes from raw input data. While promising, there remains a gap compared to human expert performance (AUROC: <strong>0.89</strong>), indicating substantial room for improvement.</p>
+                    
+                    <div class="results-grid">
+                        <div class="result-card">
+                            <h4>Dataset Selection</h4>
+                            <p class="metric">87.32% F₁</p>
+                            <p class="metric-label">for filtering</p>
+                            <p class="metric">80.25%</p>
+                            <p class="metric-label">accuracy for selection</p>
+                        </div>
+                        <div class="result-card">
+                            <h4>Data Preprocessing</h4>
+                            <p class="metric">80.63% CSC</p>
+                            <p class="metric-label">for gene data</p>
+                            <p class="metric">32.28% CSC</p>
+                            <p class="metric-label">for trait data</p>
+                        </div>
+                        <div class="result-card">
+                            <h4>Statistical Analysis</h4>
+                            <p class="metric">93.83% F₁</p>
+                            <p class="metric-label">with expert data</p>
+                            <p class="metric">0.97 AUROC</p>
+                            <p class="metric-label">high discrimination</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="content-box">
+                    <h3>Key Findings</h3>
+                    <ul class="feature-list">
+                        <li><strong>Multi-agent collaboration is essential:</strong> Code Reviewer and Domain Expert agents significantly improve performance</li>
+                        <li><strong>Clinical data extraction is challenging:</strong> Trait data preprocessing showed lower performance (32.28% CSC) compared to gene data (80.63% CSC)</li>
+                        <li><strong>Strong LLM performance matters:</strong> Results vary significantly across different LLM backbones</li>
+                        <li><strong>Batch effect correction is crucial:</strong> Including BEC improved AUROC from 0.86 to 0.97 on preprocessed data</li>
+                    </ul>
+                </div>
+
+                <div class="content-box">
+                    <h3>Future Directions</h3>
+                    <p>Our analysis reveals important areas for improvement:</p>
+                    <ul class="feature-list">
+                        <li>Developing more stable self-correction mechanisms for iterative refinement</li>
+                        <li>Enhancing domain knowledge through retrieval-augmented generation</li>
+                        <li>Improving collaborative frameworks for resolving technical disagreements</li>
+                        <li>Advancing clinical feature extraction capabilities</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Citation Section -->
+        <section id="citation" class="section section-alt">
+            <div class="container">
+                <h2 class="section-title">Citation</h2>
+                <div class="content-box">
+                    <p>If you find GenoTEX useful for your research, please cite our paper:</p>
+                    <div class="citation-box">
+                        <code>@article{liu2025genotex,
+  title={GenoTEX: An LLM Agent Benchmark for Automated Gene Expression Data Analysis},
+  author={Liu, Haoyang and Chen, Shuyu and Zhang, Ye and Wang, Haohan},
+  journal={arXiv preprint arXiv:XXXX.XXXXX},
+  year={2025}
+}</code>
+                    </div>
+                </div>
+
+                <div class="content-box">
+                    <h3>Contact</h3>
+                    <p>For questions or feedback, please contact:</p>
+                    <ul class="contact-list">
+                        <li>Haoyang Liu: <a href="mailto:hl57@illinois.edu">hl57@illinois.edu</a></li>
+                        <li>GitHub Issues: <a href="https://github.com/Liu-Hy/GenoTEX/issues" target="_blank">github.com/Liu-Hy/GenoTEX/issues</a></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 GenoTEX. University of Illinois Urbana-Champaign.</p>
+            <p>Built with ❤️ for advancing AI-assisted genomics research.</p>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
