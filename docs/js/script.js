@@ -54,8 +54,8 @@ document.addEventListener('DOMContentLoaded', function() {
             
             const href = item.getAttribute('href');
             if (href === `#${current}`) {
-                item.style.color = '#2563eb';
-                item.style.backgroundColor = '#f3f4f6';
+                item.style.color = '#059669';
+                item.style.backgroundColor = '#d1fae5';
             }
         });
     }
@@ -79,9 +79,9 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }, observerOptions);
 
-    // Observe all animatable elements
+    // Observe all animatable elements except in Abstract section to avoid weird scroll behavior
     const animatedElements = document.querySelectorAll(
-        '.content-box, .stat-card, .feature-item, .agent-card, .result-card, .capability-item'
+        '.stat-card, .feature-item, .agent-card, .result-card, .capability-item'
     );
     
     animatedElements.forEach(el => {
@@ -90,6 +90,17 @@ document.addEventListener('DOMContentLoaded', function() {
         el.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
         observer.observe(el);
     });
+    
+    // Handle content boxes separately with delayed observation
+    setTimeout(() => {
+        const contentBoxes = document.querySelectorAll('.content-box');
+        contentBoxes.forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
+            observer.observe(el);
+        });
+    }, 100);
 
     // Add animation class style
     const style = document.createElement('style');
@@ -189,7 +200,7 @@ document.addEventListener('DOMContentLoaded', function() {
         width: 3rem;
         height: 3rem;
         border-radius: 50%;
-        background: linear-gradient(135deg, #2563eb, #4f46e5);
+        background: linear-gradient(135deg, #059669, #10b981);
         color: white;
         border: none;
         font-size: 1.5rem;
@@ -197,7 +208,7 @@ document.addEventListener('DOMContentLoaded', function() {
         opacity: 0;
         visibility: hidden;
         transition: all 0.3s ease;
-        box-shadow: 0 4px 12px rgba(37, 99, 235, 0.4);
+        box-shadow: 0 4px 12px rgba(5, 150, 105, 0.4);
         z-index: 999;
     `;
     
@@ -210,12 +221,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
     scrollTopBtn.addEventListener('mouseenter', () => {
         scrollTopBtn.style.transform = 'scale(1.1) translateY(-3px)';
-        scrollTopBtn.style.boxShadow = '0 6px 16px rgba(37, 99, 235, 0.5)';
+        scrollTopBtn.style.boxShadow = '0 6px 16px rgba(5, 150, 105, 0.5)';
     });
 
     scrollTopBtn.addEventListener('mouseleave', () => {
         scrollTopBtn.style.transform = 'scale(1) translateY(0)';
-        scrollTopBtn.style.boxShadow = '0 4px 12px rgba(37, 99, 235, 0.4)';
+        scrollTopBtn.style.boxShadow = '0 4px 12px rgba(5, 150, 105, 0.4)';
     });
 
     document.body.appendChild(scrollTopBtn);
@@ -294,7 +305,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // ===========================
     console.log(
         '%cGenoTEX Project Page',
-        'color: #2563eb; font-size: 24px; font-weight: bold;'
+        'color: #059669; font-size: 24px; font-weight: bold;'
     );
     console.log(
         '%cBuilt with ❤️ for advancing AI-assisted genomics research',
@@ -302,6 +313,6 @@ document.addEventListener('DOMContentLoaded', function() {
     );
     console.log(
         '%cGitHub: https://github.com/Liu-Hy/GenoTEX',
-        'color: #4f46e5; font-size: 12px;'
+        'color: #10b981; font-size: 12px;'
     );
 });
