@@ -60,7 +60,7 @@ GenoTEX is distributed in two ways:
   - Data Available at: [ [Google Drive](https://drive.google.com/drive/folders/1ZQ8AflAecW61SrNclaMby-6x9GLCpJoW) | [Baidu Cloud Disk](https://pan.baidu.com/s/1mKfBRiBNY0GUK6LRLnn7UA?pwd=1234) ] 
   - Total data size: 82.0 GB — Please ensure you have sufficient disk space before downloading.
 
-2. **Complete Datasets on Data Platforms**: We also provide a complete, bundled version (code + data) on [Kaggle](https://www.kaggle.com/datasets/haoyangliu14/genotex-llm-agent-benchmark-for-genomic-analysis) and [Hugging Face Hub](https://huggingface.co/datasets/Liu-Hy/GenoTEX).
+2. **Complete Datasets on Data Platforms**: We also provide a complete, bundled version (code + data) on [Kaggle](https://www.kaggle.com/datasets/haoyangliu14/genotex-llm-agent-benchmark-for-genomic-analysis) and [Hugging Face](https://huggingface.co/datasets/Liu-Hy/GenoTEX).
 These versions are convenient for users who prefer a single download and want to leverage the functionalities of these platforms. 
 
 ### The Data Part
@@ -374,4 +374,4 @@ The GenoTEX dataset is released under a Creative Commons Attribution 4.0 Interna
 <a id="acknowledgments"></a>
 ## 🙏 Acknowledgments
 
-This research was supported by the National AI Research Resource (NAIRR) under grant number 240283. We thank [Yijiang Li](https://williamium3000.github.io/) for his great suggestions to the baseline method, and [Jinglin Jian](https://scholar.google.com/citations?hl=en&user=pXY2xYkAAAAJ), [Jianrong Lu](https://scholar.google.com/citations?hl=en&user=k-oe9TUAAAAJ), [Shuyi Guo](https://github.com/Shuyi1011), Taincheng Xing, Yuxuan Cheng, Jinglei Zhu, Mianchen Zhang, Miantong Zhang for their valuable contribution to the benchmark curation.
+This research was supported by the National AI Research Resource (NAIRR) under grant number 240283. We thank [Yijiang Li](https://williamium3000.github.io/) for his great suggestions to the baseline method, and [Jinglin Jian](https://scholar.google.com/citations?hl=en&user=pXY2xYkAAAAJ), [Jianrong Lu](https://scholar.google.com/citations?hl=en&user=k-oe9TUAAAAJ), [Shuyi Guo](https://github.com/Shuyi1011), Tiancheng Xing, Yuxuan Cheng, Jinglei Zhu, Mianchen Zhang, Miantong Zhang for their valuable contribution to the benchmark curation.
